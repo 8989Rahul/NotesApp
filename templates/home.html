@@ -1,9 +1,18 @@
   {% extends 'layout.html' %}
 
   {% block body %}
-    <div class="jumbotron">
+    <div align = "center" class="jumbotron">
       <h1>Welcome To NotesApp</h1>
       <p>Here you can write your feelings,ideas and so many things.This application take
-         your feelings safely with strong authentication </p>
+        your feelings safely with strong authentication
+      </p>
+      
+        {% if session.logged_in == null %}
+        <a href="/register.html" class="btn btn-primary btn-lg" >Register</a>
+        <a href="/logine.html" class="btn btn-success btn-lg" >Login</a>
+      {% endif %}
+      
     </div>
+    
+ 
   {% endblock %}
