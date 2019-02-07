@@ -3,5 +3,33 @@
 {% block body %}
    
    <h1>Dashboard <small> Welcome {{session.username}} </small></h1> 
+   <a class="btn btn-success" href="/add_article">Add Article</a>
+   <hr>
+  <table class="table table-striped">
+       <tr>
+           <th>id</th>
+           <th>title</th>
+           <th>author</th>
+           <th>create_date</th>
+           <th></th>
+           <th></th>
+       </tr>
+        {% for article in articles %}
+        <tr>
+            <td>{{article.id}}</td>
+            <td>{{article.title}}</td>
+            <td>{{article.author}}</td>
+            <td>{{article.create_date}}</td>
+            <td><a href="update_article/{{article.id}}" class="btn btn-default pull-right" >Edit</a></td>
+            <td>
+                <form action="{{ url_for('delete_article', id = article.id)}}" method="POST">
+                    <input type="hidden" name="method" value="DELETE" >
+                    <input type="submit" class="btn btn-danger" value="Delete" >   
+                </form>
+            </td>
+
+        </tr>
+        {% endfor %}
+   </table>
 
 {% endblock %}
